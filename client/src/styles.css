@@ -1,15 +1,16 @@
 :root {
-  --bg: #0b0d12;
-  --panel: #151922;
-  --panel-2: #1d2330;
-  --border: #2a3140;
-  --text: #e7ecf3;
-  --muted: #8b95a7;
-  --accent: #14f195;
-  --accent-2: #9945ff;
-  --win: #14f195;
-  --loss: #ff5470;
-  --radius: 14px;
+  --bg: #f3eadb;
+  --surface: #fffdf6;
+  --ink: #1c1813;
+  --muted: #7c7264;
+  --red: #ff4d3d;
+  --blue: #2f6bff;
+  --gold: #f6a723;
+  --win: #d98a12;
+  --loss: #e5382a;
+  --radius: 12px;
+  --shadow: 4px 4px 0 var(--ink);
+  --shadow-sm: 3px 3px 0 var(--ink);
 }
 
 * {
@@ -18,55 +19,68 @@
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background: radial-gradient(1200px 600px at 50% -10%, #171b28, var(--bg));
-  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(28, 24, 19, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--ink);
   min-height: 100vh;
 }
 
 button {
   font: inherit;
+  font-weight: 700;
   cursor: pointer;
-  border: none;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--ink);
   border-radius: 10px;
-  transition: transform 0.08s ease, opacity 0.15s ease, background 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.12s ease;
 }
 
 button:disabled {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 button:not(:disabled):active {
-  transform: translateY(1px);
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--ink);
 }
 
 .primary {
-  background: linear-gradient(135deg, var(--accent), #0fd888);
-  color: #04150d;
-  font-weight: 700;
+  background: var(--red);
+  color: #fff;
   padding: 12px 18px;
 }
 
 .ghost {
-  background: var(--panel-2);
-  color: var(--text);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
   padding: 8px 14px;
 }
 
 .link {
   background: none;
+  border: none;
+  box-shadow: none;
   color: var(--muted);
   font-size: 12px;
+  font-weight: 600;
   padding: 2px 4px;
   text-decoration: underline;
 }
 
+.link:not(:disabled):active {
+  transform: none;
+  box-shadow: none;
+}
+
 .app {
-  max-width: 560px;
+  max-width: 520px;
   margin: 0 auto;
-  padding: 20px 16px 64px;
+  padding: 22px 16px 64px;
 }
 
 .topbar {
@@ -78,8 +92,9 @@ button:not(:disabled):active {
 
 .brand {
   font-weight: 800;
-  letter-spacing: -0.02em;
   font-size: 18px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .wallet {
@@ -89,8 +104,8 @@ button:not(:disabled):active {
 }
 
 .balance {
-  color: var(--accent);
-  font-weight: 700;
+  color: var(--win);
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 
@@ -117,7 +132,6 @@ button:not(:disabled):active {
 
 .wallet-btn:hover {
   color: var(--loss);
-  border-color: rgba(255, 84, 112, 0.4);
 }
 
 .stage {
@@ -138,26 +152,26 @@ button:not(:disabled):active {
 }
 
 .coin {
-  width: 120px;
-  height: 120px;
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 800;
-  color: #04150d;
-  background: linear-gradient(145deg, #ffe27a, #f5b301);
-  box-shadow: 0 10px 40px rgba(245, 179, 1, 0.25), inset 0 -6px 16px rgba(0, 0, 0, 0.25);
-  transform-style: preserve-3d;
+  color: var(--ink);
+  background: radial-gradient(circle at 38% 30%, #ffdd7a, var(--gold) 72%);
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
 }
 
 .coin.landed.win {
-  box-shadow: 0 12px 44px rgba(20, 241, 149, 0.35), inset 0 -6px 16px rgba(0, 0, 0, 0.25);
+  background: radial-gradient(circle at 38% 30%, #ffe487, #f0980f 72%);
 }
 
 .coin.landed.loss {
-  filter: saturate(0.45) brightness(0.82);
-  box-shadow: 0 12px 44px rgba(255, 84, 112, 0.28), inset 0 -6px 16px rgba(0, 0, 0, 0.25);
+  background: radial-gradient(circle at 38% 30%, #dcd6c8, #a69d8b 72%);
+  color: #4a463d;
 }
 
 .flip-result {
@@ -169,7 +183,7 @@ button:not(:disabled):active {
 }
 
 .flip-net {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
@@ -195,18 +209,19 @@ button:not(:disabled):active {
 
 .hint {
   color: var(--muted);
+  font-weight: 600;
 }
 
 .bet {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .segmented {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .segmented.sides {
@@ -218,24 +233,23 @@ button:not(:disabled):active {
 }
 
 .segmented button {
-  background: var(--panel);
-  color: var(--text);
-  border: 1px solid var(--border);
   padding: 12px;
-  text-transform: capitalize;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 13px;
 }
 
 .segmented button.active {
-  border-color: var(--accent);
-  background: var(--panel-2);
-  box-shadow: inset 0 0 0 1px var(--accent);
+  background: var(--blue);
+  color: #fff;
 }
 
 .flip {
   width: 100%;
-  padding: 14px;
+  padding: 15px;
   font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .modal-overlay {
@@ -257,8 +271,20 @@ button:not(:disabled):active {
   border: 1px solid #2c2740;
   border-radius: 18px;
   padding: 20px;
+  color: #e7e3f5;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
   animation: modal-in 0.18s ease;
+}
+
+.wallet-modal button {
+  border: none;
+  box-shadow: none;
+  border-radius: 12px;
+  padding: 11px 14px;
+}
+
+.wallet-modal button:not(:disabled):active {
+  transform: translateY(1px);
 }
 
 @keyframes fade-in {
@@ -289,7 +315,7 @@ button:not(:disabled):active {
 .wm-account {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 12px;
-  color: var(--muted);
+  color: #8b8698;
   background: #211d30;
   border: 1px solid #2c2740;
   padding: 4px 10px;
@@ -304,7 +330,7 @@ button:not(:disabled):active {
 .wm-sub {
   margin: 0 0 16px;
   text-align: center;
-  color: var(--muted);
+  color: #8b8698;
   font-size: 13px;
 }
 
@@ -327,7 +353,7 @@ button:not(:disabled):active {
 }
 
 .wm-rows dt {
-  color: var(--muted);
+  color: #8b8698;
   font-size: 13px;
 }
 
@@ -347,7 +373,7 @@ button:not(:disabled):active {
   align-items: center;
   gap: 9px;
   font-size: 13px;
-  color: var(--muted);
+  color: #8b8698;
   padding: 10px 12px;
   border: 1px dashed #3a3550;
   border-radius: 10px;
@@ -356,7 +382,7 @@ button:not(:disabled):active {
 }
 
 .wm-sim input {
-  accent-color: var(--accent-2);
+  accent-color: #ab9ff2;
   width: 15px;
   height: 15px;
 }
@@ -365,6 +391,11 @@ button:not(:disabled):active {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+.wm-actions .ghost {
+  background: #211d30;
+  color: #e7e3f5;
 }
 
 .wm-actions .primary {
@@ -376,7 +407,7 @@ button:not(:disabled):active {
   margin: 14px 0 0;
   text-align: center;
   font-size: 11px;
-  color: #5c6478;
+  color: #5c5768;
 }
 
 .flow {
@@ -385,25 +416,13 @@ button:not(:disabled):active {
   border-radius: var(--radius);
   text-align: center;
   font-weight: 600;
-  background: var(--panel);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
-  transition: border-color 0.25s ease;
-}
-
-.flow.tone-pending {
-  border-color: rgba(153, 69, 255, 0.45);
-}
-
-.flow.tone-success {
-  border-color: rgba(20, 241, 149, 0.5);
-}
-
-.flow.tone-error {
-  border-color: rgba(255, 84, 112, 0.45);
 }
 
 .flow-head {
@@ -414,35 +433,37 @@ button:not(:disabled):active {
 }
 
 .flow-title {
-  font-weight: 700;
-  text-transform: capitalize;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 14px;
 }
 
 .flow-badge {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 3px 9px;
   border-radius: 999px;
-  background: var(--panel-2);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 2px solid var(--ink);
   color: var(--muted);
 }
 
 .tone-pending .flow-badge {
-  color: #c9a9ff;
-  border-color: rgba(153, 69, 255, 0.45);
+  background: var(--blue);
+  color: #fff;
 }
 
 .tone-success .flow-badge {
-  color: var(--win);
-  border-color: rgba(20, 241, 149, 0.5);
+  background: var(--gold);
+  color: var(--ink);
 }
 
 .tone-error .flow-badge {
-  color: var(--loss);
-  border-color: rgba(255, 84, 112, 0.45);
+  background: var(--loss);
+  color: #fff;
 }
 
 .tx-steps {
@@ -462,69 +483,69 @@ button:not(:disabled):active {
   gap: 8px;
   color: var(--muted);
   font-size: 13px;
+  font-weight: 700;
 }
 
 .tx-steps li:not(:last-child)::after {
   content: "";
   width: 22px;
-  height: 2px;
-  background: var(--border);
+  height: 3px;
+  background: var(--ink);
+  opacity: 0.15;
   border-radius: 2px;
 }
 
 .tx-steps .dot {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-size: 12px;
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  color: var(--muted);
-}
-
-.tx-steps li.done .dot {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #04150d;
+  font-weight: 800;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  color: var(--ink);
 }
 
 .tx-steps li.done {
-  color: var(--text);
+  color: var(--ink);
 }
 
-.tx-steps li.active .dot {
-  border-color: var(--accent-2);
-  color: #c9a9ff;
-  box-shadow: 0 0 0 3px rgba(153, 69, 255, 0.2);
-  animation: pulse 1s ease-in-out infinite;
+.tx-steps li.done .dot {
+  background: var(--gold);
+  color: var(--ink);
 }
 
 .tx-steps li.active {
-  color: #c9a9ff;
+  color: var(--blue);
 }
 
-.tx-steps li.error .dot {
-  background: var(--loss);
-  border-color: var(--loss);
-  color: #2a0a12;
+.tx-steps li.active .dot {
+  background: var(--blue);
+  color: #fff;
+  animation: pulse 0.9s ease-in-out infinite;
 }
 
 .tx-steps li.error {
   color: var(--loss);
 }
 
+.tx-steps li.error .dot {
+  background: var(--loss);
+  color: #fff;
+}
+
 @keyframes pulse {
   50% {
-    box-shadow: 0 0 0 6px rgba(153, 69, 255, 0.05);
+    transform: scale(1.14);
   }
 }
 
 .tx-message {
   margin: 0;
   color: var(--muted);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .tx-sig-row {
@@ -539,9 +560,9 @@ button:not(:disabled):active {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 12px;
   color: var(--muted);
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  padding: 3px 10px;
   border-radius: 8px;
 }
 
@@ -555,7 +576,7 @@ button:not(:disabled):active {
   width: 100%;
   margin: 6px 0 0;
   text-align: left;
-  border-top: 1px solid var(--border);
+  border-top: 2px solid var(--ink);
   padding-top: 14px;
   display: grid;
   gap: 8px;
@@ -569,6 +590,7 @@ button:not(:disabled):active {
 .fair dt {
   color: var(--muted);
   font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -578,7 +600,7 @@ button:not(:disabled):active {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 12px;
   word-break: break-all;
-  color: var(--text);
+  color: var(--ink);
 }
 
 .history {
@@ -588,9 +610,10 @@ button:not(:disabled):active {
 .history h3 {
   color: var(--muted);
   font-size: 13px;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .history ul {
@@ -599,22 +622,26 @@ button:not(:disabled):active {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .history li {
   display: flex;
   justify-content: space-between;
-  padding: 10px 14px;
-  background: var(--panel);
-  border: 1px solid var(--border);
+  padding: 11px 14px;
+  background: var(--surface);
+  border: 2px solid var(--ink);
   border-radius: 10px;
-  text-transform: capitalize;
+  box-shadow: var(--shadow-sm);
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .history-net {
   font-variant-numeric: tabular-nums;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .history li.win .history-net {
