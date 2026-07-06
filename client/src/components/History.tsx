@@ -10,7 +10,7 @@ export function History({ rounds }: Props) {
 
   return (
     <section className="history">
-      <h3>Recent flips</h3>
+      <h3 className="section-label">Recent flips</h3>
       <ul>
         {rounds.map((round) => (
           <li key={round.id} className={round.won ? "win" : "loss"}>

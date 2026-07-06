@@ -68,7 +68,10 @@ export default function App() {
               <BetControls balance={balance ?? 0} onFlip={handleFlip} />
             )}
 
-            <FlowPanel state={state} onRetry={retry} onReset={reset} />
+            <section className="console">
+              <h3 className="section-label">Onchain state</h3>
+              <FlowPanel state={state} onRetry={retry} onReset={reset} />
+            </section>
           </>
         ) : (
           <>

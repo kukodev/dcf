@@ -1,7 +1,7 @@
 import type { SettledRound } from "@dcf/shared";
 
 export function formatSol(n: number): string {
-  return `${n.toFixed(3)} SOL`;
+  return `${n.toFixed(2)} SOL`;
 }
 
 export function shortAddress(address: string): string {
