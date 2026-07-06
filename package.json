@@ -12,7 +12,12 @@
     "dev:server": "npm run dev -w @dcf/server",
     "dev:client": "npm run dev -w @dcf/client",
     "build": "npm run build -w @dcf/client",
+    "start": "npm run start -w @dcf/server",
+    "heroku-postbuild": "npm run build -w @dcf/client",
     "typecheck": "tsc -p server/tsconfig.json --noEmit && tsc -p client/tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "devDependencies": {
     "concurrently": "^9.0.1",
