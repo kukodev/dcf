@@ -10,7 +10,7 @@ A small take on the DCF coin flip: connect a wallet, pick heads/tails, flip for 
 
 **Live:** https://degencoinflip-58ac4c2374c3.herokuapp.com/ (Heroku dyno - first load may take a moment to wake).
 
-The flip is simple on purpose - I used it as a surface to show **how I build**: clean separation, a state machine instead of scattered booleans, typed contracts front-to-back. The domain idea: server-authoritative outcomes => the server decides, the client animates toward it and reconciles to the truth.
+The flip is simple on purpose - I used it as a surface to show **how I build**: clean separation, a state machine instead of scattered booleans, typed contracts front-to-back. The domain idea is that the server decides, the client animates towards it.
 
 ## Run it
 
