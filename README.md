@@ -1,5 +1,11 @@
 # Degen Coin Flip
 
+<p align="center">
+  <img width="250" src="https://github.com/user-attachments/assets/36a0ae39-7c1a-469a-8a90-f2958287b0cc" />
+  <img width="250" src="https://github.com/user-attachments/assets/c48e5e1c-d3ee-42d4-9078-911c4b5a785b" />
+  <img width="250" src="https://github.com/user-attachments/assets/df882cb5-4879-4a57-8e61-b4170044e0dc" />
+</p>
+
 A small take on the DCF coin flip: connect a wallet, pick heads/tails, flip for SOL.
 
 **Live:** https://degencoinflip-58ac4c2374c3.herokuapp.com/ (Heroku dyno - first load may take a moment to wake).
